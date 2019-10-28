@@ -4,6 +4,7 @@ from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):
+  pass
 
 
 class Card(models.Model):
@@ -13,13 +14,13 @@ class Card(models.Model):
   owner = models.ForeignKey(to="User", related_name="card", on_delete="models.CASCADE", ) #Make sure is read only .. FIX ME
   correct_flips = models.IntegerField(default=0)
   incorrect_flips = models.IntegerField(default=0)
-  success_rate = models.DecimalField(default=null, max_digits=5, decimal_places=2, blank=True, null=True)
+  success_rate = models.DecimalField(default=None, max_digits=5, decimal_places=2, blank=True, null=True)
 
 class Deck(models.Model):
   title = models.CharField(max_length=100)
   owner = models.ForeignKey(to="User", related_name="deck", on_delete="models.CASCADE",)
   cards = models.ManyToManyField(to="Card", related_name="cards",)
-  
+
 
 
 
