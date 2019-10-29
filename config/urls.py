@@ -23,3 +23,4 @@ urlpatterns = [
     path('', views.test, name='splash'),
     path('accounts/', include('registration.backends.default.urls')),
 ]
+
