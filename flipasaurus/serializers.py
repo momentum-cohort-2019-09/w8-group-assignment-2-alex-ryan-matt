@@ -3,11 +3,10 @@ from rest_framework import serializers
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-  deck =  serializers.PrimaryKeyRelatedField(many=True, queryset=Deck.objects.all())
-
+  decks =  serializers.PrimaryKeyRelatedField(many=True, queryset=Deck.objects.all())
   class Meta:
     model = User
-    fields = ['id','username','deck']
+    fields = ['id','username','decks']
 
 class CardSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:

@@ -12,3 +12,10 @@
   background:purple;
   color:white;
 }
+.columns{
+  align-items:stretch;
+  margin:0
+}
+.column{
+  margin:0
+}

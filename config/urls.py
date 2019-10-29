@@ -26,9 +26,8 @@ router.register(r'deck', views.DeckViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.test, name='splash'),
     path('accounts/', include('registration.backends.default.urls')),
-    path('dashboard/', views.dashboard, name='dashboard')
+    path('dashboard/', views.dashboard, name='dashboard'),
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
