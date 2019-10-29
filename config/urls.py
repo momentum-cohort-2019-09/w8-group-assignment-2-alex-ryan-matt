@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.test, name='splash'),
     path('accounts/', include('registration.backends.default.urls')),
+    path('dashboard/', views.dashboard, name='dashboard')
 ]
