@@ -6,7 +6,7 @@ from flipasaurus.serializers import UserSerializer, CardSerializer, DeckSerializ
 # Create your views here.
 
 def test(request):
-  return render(request, 'flipasaurus/base.html')
+  return render(request, 'base.html')
 
 class UserViewSet(viewsets.ModelViewSet):
   """
