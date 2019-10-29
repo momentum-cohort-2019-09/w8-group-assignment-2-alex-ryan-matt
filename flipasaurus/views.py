@@ -73,7 +73,24 @@ class CardViewSet(viewsets.ModelViewSet):
 
 class DeckViewSet(viewsets.ModelViewSet):
   """
-  API endpoint that allows cards to be viewed or edited.
+  API endpoint that allows decks to be viewed or edited.
   """
   queryset = Deck.objects.all()
   serializer_class = DeckSerializer
+
+def edit_card(request, pk):
+  card = get_object_or_404(Card, pk=pk)
+
+  if request == "POST":
+    form = CardForm(instance=card, data = request.POST)
+    if form.is_valid():
+      form = form.save()
+      return redirect(to='flipasaurus/edit_deck.html', pk=card.id) #Redirect to edit deck template
+  else:
+    form = CardForm(instance=card)
+
+  return render(request, "flipasaurus/edit_card.html" , {
+    "card": card,
+    "form": form,
+  })
+
