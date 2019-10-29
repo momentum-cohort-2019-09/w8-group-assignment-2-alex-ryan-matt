@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_simple_bulma',
     'flipasaurus',
+    'rest_framework',
     
 ]
 
@@ -138,3 +139,7 @@ STATICFILES_FINDERS = [
   # Now add our custom SimpleBulma one.
   'django_simple_bulma.finders.SimpleBulmaFinder',
 ]
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination', 'PAGE_SIZE': 10
+}
+
