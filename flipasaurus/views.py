@@ -63,7 +63,7 @@ def edit_card(request, pk):
     form = CardForm(instance=card, data = request.POST)
     if form.is_valid():
       form = form.save()
-      return redirect(to='', pk=card.id) #Redirect to edit deck template
+      return redirect(to='flipasaurus/edit_deck.html', pk=card.id) #Redirect to edit deck template
   else:
     form = CardForm(instance=card)
 

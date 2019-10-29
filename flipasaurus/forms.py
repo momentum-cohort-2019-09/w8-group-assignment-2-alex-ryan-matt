@@ -12,4 +12,3 @@ class CardForm(forms.ModelForm):
     class Meta:
         model = Card
         fields = ['prompt', 'description']
-
