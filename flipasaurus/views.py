@@ -24,7 +24,9 @@ class CardViewSet(viewsets.ModelViewSet):
 
 class DeckViewSet(viewsets.ModelViewSet):
   """
-  API endpoint that allows cards to be viewed or edited.
+  API endpoint that allows decks to be viewed or edited.
   """
   queryset = Deck.objects.all()
   serializer_class = DeckSerializer
+
+
