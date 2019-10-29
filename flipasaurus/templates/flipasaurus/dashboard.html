@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="columns">
+  <div class="sidebar column is-one-fifth">
+    <div class="create">
+      create a thing
+    </div>
+    <div class="quiz">
+      quiz yo self
+    </div>
+  </div>
+  <div class="dashboard column auto">
+    <div class="search-bar">
+
+    </div>
+    <div class="decks">
+      <div class="deck">
+        <div class="title">
+          DECK TITLE
+        </div>
+        <div class="subject">
+          DECK SUBJECT
+        </div>
+        <div class="buttons">
+          <div class="study">
+            STUDY
+          </div>
+          <div class="edit">
+            <a href="{% url 'create_deck' %}">EDIT</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
