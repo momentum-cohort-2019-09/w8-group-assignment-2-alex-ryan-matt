@@ -123,6 +123,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = os.path.join("static")
+
 AUTH_USER_MODEL = 'flipasaurus.User'
 
 ACCOUNT_ACTIVATION_DAYS = 7 

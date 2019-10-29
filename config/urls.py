@@ -24,3 +24,4 @@ urlpatterns = [
     path('accounts/', include('registration.backends.default.urls')),
     path('dashboard/', views.dashboard, name='dashboard')
 ]
+

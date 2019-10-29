@@ -9,12 +9,6 @@
 }
 
 .sidebar{
-  width:20vw;
-  flex:0 0 1;
   background:purple;
   color:white;
-}
-
-.wrapper{
-  display:flex;
 }
