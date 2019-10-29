@@ -1,0 +1,12 @@
+{% extends 'flipasaurus/base.html' %}
+
+{% block content %}
+<h2>Edit Card:</h2>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type='submit' , value="Save Edits"></input>
+</form>
+
+{% endblock %}

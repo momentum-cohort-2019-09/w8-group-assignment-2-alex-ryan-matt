@@ -30,5 +30,6 @@ urlpatterns = [
     path('accounts/', include('registration.backends.default.urls')),
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('flipasaurus/<int:pk>/edit/', views.edit_card, name="edit_card"),
 ]
 

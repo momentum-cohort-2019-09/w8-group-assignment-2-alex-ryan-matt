@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from flipasaurus.models import User, Card, Deck
 from rest_framework import viewsets
 from flipasaurus.serializers import UserSerializer, CardSerializer, DeckSerializer
@@ -28,3 +28,19 @@ class DeckViewSet(viewsets.ModelViewSet):
   """
   queryset = Deck.objects.all()
   serializer_class = DeckSerializer
+
+def edit_card(request, pk):
+  card = get_object_or_404(Card, pk=pk)
+
+  if request == "POST":
+    form = CardForm(instance=card, data = request.POST)
+    if form.is_valid():
+      form = form.save()
+      return redirect(to='', pk=card.id) #Redirect to edit deck template
+  else:
+    form = CardForm(instance=card)
+
+  return render(request, "flipasaurus/edit_card.html" , {
+    "card": card,
+    "form": form,
+  })
