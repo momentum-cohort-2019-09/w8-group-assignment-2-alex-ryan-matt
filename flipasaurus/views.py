@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from flipasaurus.models import User, Card, Deck
 from .forms import DeckForm, CardForm
 from django.http import HttpResponse
@@ -34,6 +34,25 @@ def create_card(request):
   return render(request, 'create_card.html', {
     'form': form
   })
+
+def delete_card(request, pk):
+  Note.objects.get(id=pk).delete()
+  return redirect('/')
+
+def edit_deck(request, pk):
+  deck = get_object_or_404(Deck, id=pk)
+  if request.method == 'POST':
+    form = DeckForm(request.POST, instance=deck)
+    if form.is_valid():
+      deck = form.save(commit=False)
+      deck.save()
+      return redirect('/')
+  else:
+    form = DeckForm()
+  return render(request, 'edit_deck.html', {
+    'form': form
+  })
+    
 
 class UserViewSet(viewsets.ModelViewSet):
   """
