@@ -28,6 +28,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.test, name='splash'),
     path('accounts/', include('registration.backends.default.urls')),
+    path('flipasaurus/create_deck/', views.create_deck, name='create_deck'),
+    path('flipasaurus/create_card/', views.create_card, name='create_card'),
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
