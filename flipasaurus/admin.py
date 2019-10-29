@@ -7,3 +7,4 @@ from .models import User, Card, Deck
 admin.site.register(User, UserAdmin)
 admin.site.register(Card)
 admin.site.register(Deck)
+
