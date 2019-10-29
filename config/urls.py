@@ -26,8 +26,8 @@ router.register(r'deck', views.DeckViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.test, name='splash'),
     path('accounts/', include('registration.backends.default.urls')),
+    path('dashboard/', views.dashboard, name='dashboard'),
     path('flipasaurus/create_deck/', views.create_deck, name='create_deck'),
     path('flipasaurus/create_card/', views.create_card, name='create_card'),
     path('', include(router.urls)),
