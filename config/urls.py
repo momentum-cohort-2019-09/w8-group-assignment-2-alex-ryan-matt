@@ -16,6 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from flipasaurus import views
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'users', views.UserViewSet)
+router.register(r'card', views.CardViewSet)
+router.register(r'deck', views.DeckViewSet)
 
 
 urlpatterns = [
@@ -24,5 +30,7 @@ urlpatterns = [
     path('accounts/', include('registration.backends.default.urls')),
     path('flipasaurus/create_deck/', views.create_deck, name='create_deck'),
     path('flipasaurus/create_card/', views.create_card, name='create_card'),
+    path('', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
 
