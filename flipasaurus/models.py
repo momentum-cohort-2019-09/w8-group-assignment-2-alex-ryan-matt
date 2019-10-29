@@ -19,7 +19,7 @@ class Card(models.Model):
 class Deck(models.Model):
   subject = models.CharField(max_length = 100, blank=True, null=True)
   title = models.CharField(max_length=100)
-  owner = models.ForeignKey(to="User", related_name="deck", on_delete="models.CASCADE",)
+  owner = models.ForeignKey(to="User", related_name="decks", on_delete="models.CASCADE",)
   cards = models.ManyToManyField(to="Card", related_name="cards",)
   public = models.BooleanField(default=True) #HYPE
 

@@ -11,6 +11,9 @@ from flipasaurus.serializers import UserSerializer, CardSerializer, DeckSerializ
 def test(request):
   return render(request, 'base.html')
 
+def dashboard(request):
+  return render(request, 'flipasaurus/dashboard.html')
+  
 def create_deck(request):
   if request.method == 'POST':
     form = DeckForm(request.POST)
