@@ -40,6 +40,25 @@ def create_card(request):
     'form': form
   })
 
+def delete_card(request, pk):
+  Note.objects.get(id=pk).delete()
+  return redirect('/')
+
+def edit_deck(request, pk):
+  deck = get_object_or_404(Deck, id=pk)
+  if request.method == 'POST':
+    form = DeckForm(request.POST, instance=deck)
+    if form.is_valid():
+      deck = form.save(commit=False)
+      deck.save()
+      return redirect('/')
+  else:
+    form = DeckForm()
+  return render(request, 'edit_deck.html', {
+    'form': form
+  })
+    
+
 class UserViewSet(viewsets.ModelViewSet):
   """
   API endpoint that allows users to be viewed or edited.
