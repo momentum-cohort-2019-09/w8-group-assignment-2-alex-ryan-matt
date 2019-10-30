@@ -11,6 +11,7 @@ django-registration-redux = "*"
 django-simple-bulma = "*"
 djangorestframework = "*"
 whitenoise = "*"
+bulma = "*"
 
 [requires]
 python_version = "3.7"

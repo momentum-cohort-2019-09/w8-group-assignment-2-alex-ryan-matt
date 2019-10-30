@@ -16,5 +16,5 @@ class CardSerializer(serializers.HyperlinkedModelSerializer):
 class DeckSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
     model = Deck
-    fields = ['title','owner','cards','subject']
+    fields = ['subject','title','owner','cards','public','updated_at']
 
