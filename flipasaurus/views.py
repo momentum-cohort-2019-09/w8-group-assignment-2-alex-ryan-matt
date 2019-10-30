@@ -5,6 +5,8 @@ from django.http import HttpResponse
 from django.views.generic.edit import FormView
 from rest_framework import viewsets
 from flipasaurus.serializers import UserSerializer, CardSerializer, DeckSerializer
+from rest_framework.decorators import action
+
 
 # Create your views here.
 
@@ -70,6 +72,7 @@ class CardViewSet(viewsets.ModelViewSet):
   """
   queryset = Card.objects.all()
   serializer_class = CardSerializer
+
 
 class DeckViewSet(viewsets.ModelViewSet):
   """
