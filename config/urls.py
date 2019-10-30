@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
 from flipasaurus import views
 from rest_framework import routers
 
@@ -26,7 +27,7 @@ router.register(r'deck', views.DeckViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('registration.backends.default.urls')),
+    path('accounts/', include('registration.backends.simple.urls')),
     path('', views.dashboard, name='dashboard'),
     path('flipasaurus/create_deck/', views.create_deck, name='create_deck'),
     path('flipasaurus/create_card/', views.create_card, name='create_card'),
@@ -37,4 +38,12 @@ urlpatterns = [
     path('flipasaurus/<int:pk>/delete_deck', views.delete_deck, name='delete_deck'),
     path('flipasaurus/<int:pk>/edit/', views.edit_card, name="edit_card"),
 ]
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        path('__debug__/', include(debug_toolbar.urls)),
 
+        # For django versions before 2.0:
+        # url(r'^__debug__/', include(debug_toolbar.urls)),
+
+    ] + urlpatterns
