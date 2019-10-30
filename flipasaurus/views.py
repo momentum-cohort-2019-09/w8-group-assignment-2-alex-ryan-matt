@@ -39,7 +39,7 @@ def create_card(request):
   })
 
 def delete_card(request, pk):
-  Note.objects.get(id=pk).delete()
+  Card.objects.get(id=pk).delete()
   return redirect('/')
 
 def edit_deck(request, pk):
@@ -56,6 +56,9 @@ def edit_deck(request, pk):
     'form': form
   })
     
+def delete_deck(request, pk):
+  Deck.objects.get(id=pk).delete()
+  return redirect('/')
 
 class UserViewSet(viewsets.ModelViewSet):
   """
