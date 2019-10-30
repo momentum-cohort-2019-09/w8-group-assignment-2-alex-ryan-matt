@@ -27,10 +27,10 @@ router.register(r'deck', views.DeckViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.default.urls')),
-    path('dashboard/', views.dashboard, name='dashboard'),
+    path('', views.dashboard, name='dashboard'),
     path('flipasaurus/create_deck/', views.create_deck, name='create_deck'),
     path('flipasaurus/create_card/', views.create_card, name='create_card'),
-    path('', include(router.urls)),
+    path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('flipasaurus/<int:pk>/delete', views.delete_card, name='delete_card'),
     path('flipasaurus/<int:pk>/edit_deck', views.edit_deck, name='edit_deck'),
