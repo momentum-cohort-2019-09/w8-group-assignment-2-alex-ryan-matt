@@ -1,6 +1,8 @@
 {% extends "base.html" %} {% block content %}
+<h2>Create Deck:</h2>
+
 <form method="POST">{% csrf_token %} {{ form.as_p }}
-    <input type="submit" value="submit"></input>
+    <input type="submit" value="Create"></input>
 </form>
-<p><a href="/notes/create_card/">Add Card</a></p>
+<p><a href="{% url 'create_card' %}">Add Card</a></p>
 {% endblock %}

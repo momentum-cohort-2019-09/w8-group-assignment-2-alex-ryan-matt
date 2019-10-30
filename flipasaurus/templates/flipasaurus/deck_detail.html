@@ -1,0 +1,14 @@
+{% extends "base.html" %} {% block content %}
+<h2>{{ deck.title }}</h2>
+<ul>
+    {% for cards in deck %}
+    <li>
+        <div>{{card.prompt}}</div>
+    </li>
+    {% endfor %}
+</ul>
+
+<p><a href='/notes/{{deck.id}}/edit_deck'>Edit</a></p>
+<p><a href="/notes/{{deck.id}}/delete_deck">Delete</a></p>
+<p><a href="/">Go Home</a></p>
+{% endblock %}

@@ -34,6 +34,7 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('flipasaurus/<int:pk>/delete', views.delete_card, name='delete_card'),
     path('flipasaurus/<int:pk>/edit_deck', views.edit_deck, name='edit_deck'),
+    path('flipasaurus/<int:pk>/delete_deck', views.delete_deck, name='delete_deck'),
     path('flipasaurus/<int:pk>/edit/', views.edit_card, name="edit_card"),
 ]
 
