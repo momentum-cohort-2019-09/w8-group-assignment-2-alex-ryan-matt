@@ -10,6 +10,7 @@ django = "*"
 django-registration-redux = "*"
 django-simple-bulma = "*"
 djangorestframework = "*"
+whitenoise = "*"
 
 [requires]
 python_version = "3.7"

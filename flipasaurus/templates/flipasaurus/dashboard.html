@@ -6,31 +6,105 @@
     <div class="create">
       create a thing
     </div>
-    <div class="quiz">
-      quiz yo self
-    </div>
   </div>
-  <div class="dashboard column auto">
-    <div class="search-bar">
-
-    </div>
-    <div class="decks">
-      <div class="deck">
-        <div class="title">
-          DECK TITLE
-        </div>
-        <div class="subject">
-          DECK SUBJECT
-        </div>
-        <div class="buttons">
-          <div class="study">
-            STUDY
+  <div class="dashboard column auto tile is-ancestor">
+    <div class="decks tile is-parent">
+      <div class="tile is-4 is-parent">
+        <div class="deck tile is-child">
+          <div class="deck-title">
+            DECK TITLE
           </div>
-          <div class="edit">
-            <a href="{% url 'create_deck' %}">EDIT</a>
+          <div class="subject">
+            DECK SUBJECT
+          </div>
+          <div class="deck-buttons">
+            <button class="study">
+              STUDY
+            </button>
+            <button class="edit">
+              EDIT
+            </button>
+            <button class="quiz">
+              quiz yo self
+            </button>
+            <button class="deck-delete has-text-danger">
+              DELETE
+            </button>
           </div>
         </div>
       </div>
+      <div class="tile is-4 is-parent">
+          <div class="deck tile is-child">
+            <div class="deck-title">
+              DECK TITLE
+            </div>
+            <div class="subject">
+              DECK SUBJECT
+            </div>
+            <div class="deck-buttons">
+              <button class="study">
+                STUDY
+              </button>
+              <button class="edit">
+                EDIT
+              </button>
+              <button class="quiz">
+                quiz yo self
+              </button>
+              <button class="deck-delete has-text-danger">
+                DELETE
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="tile is-4 is-parent">
+            <div class="deck tile is-child">
+              <div class="deck-title">
+                DECK TITLE
+              </div>
+              <div class="subject">
+                DECK SUBJECT
+              </div>
+              <div class="deck-buttons">
+                <button class="study">
+                  STUDY
+                </button>
+                <button class="edit">
+                  EDIT
+                </button>
+                <button class="quiz">
+                  quiz yo self
+                </button>
+                <button class="deck-delete has-text-danger">
+                  DELETE
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="tile is-4 is-parent">
+              <div class="deck tile is-child">
+                <div class="deck-title">
+                  DECK TITLE
+                </div>
+                <div class="subject">
+                  DECK SUBJECT
+                </div>
+                <div class="deck-buttons">
+                  <button class="study">
+                    STUDY
+                  </button>
+                  <button class="edit">
+                    EDIT
+                  </button>
+                  <button class="quiz">
+                    quiz yo self
+                  </button>
+                  <button class="deck-delete has-text-danger">
+                    DELETE
+                  </button>
+                </div>
+              </div>
+            </div>
     </div>
   </div>
 </div>
