@@ -24,7 +24,7 @@ def create_deck(request):
       return redirect(to=deck)
   else:
     form = DeckForm()
-  return render(request, 'create_deck.html', {
+  return render(request, 'flipasaurus/create_deck.html', {
     'form': form
   })
 
@@ -36,13 +36,13 @@ def create_card(request):
       return redirect(to=card)
   else:
     form = CardForm()
-  return render(request, 'create_card.html', {
+  return render(request, 'flipasaurus/create_card.html', {
     'form': form
   })
 
 def delete_card(request, pk):
-  Note.objects.get(id=pk).delete()
-  return redirect('/')
+  Card.objects.get(id=pk).delete()
+  return redirect(to='flipasaurus/edit_deck.html')
 
 def edit_deck(request, pk):
   deck = get_object_or_404(Deck, id=pk)
@@ -54,10 +54,14 @@ def edit_deck(request, pk):
       return redirect('/')
   else:
     form = DeckForm()
-  return render(request, 'edit_deck.html', {
+  return render(request, 'flipasaurus/edit_deck.html', {
+    'deck': deck,
     'form': form
   })
     
+def delete_deck(request, pk):
+  Deck.objects.get(id=pk).delete()
+  return redirect(to='flipasaurus/dashboard.html')
 
 class UserViewSet(viewsets.ModelViewSet):
   """
