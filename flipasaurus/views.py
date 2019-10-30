@@ -53,6 +53,7 @@ def edit_deck(request, pk):
   else:
     form = DeckForm()
   return render(request, 'flipasaurus/edit_deck.html', {
+    'deck': deck,
     'form': form
   })
     
