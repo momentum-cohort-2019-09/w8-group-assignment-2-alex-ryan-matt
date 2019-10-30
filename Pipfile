@@ -10,6 +10,7 @@ django = "*"
 django-registration-redux = "*"
 django-simple-bulma = "*"
 djangorestframework = "*"
+whitenoise = "*"
 bulma = "*"
 
 [requires]

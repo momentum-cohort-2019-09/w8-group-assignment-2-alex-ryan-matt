@@ -19,3 +19,19 @@
 .column{
   margin:0
 }
+.deck{
+  background:rgb(168, 233, 227);
+  padding:6px;
+  margin-bottom:5px;
+}
+.decks{
+  flex-wrap: wrap;
+}
+
+.is-child{
+  box-shadow: -2px -3px 9px 3px lightslategray;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+
