@@ -8,104 +8,33 @@
     </div>
   </div>
   <div class=" dashboard column auto tile is-ancestor">
-    <div class="decks tile is-parent">
-      <div class="tile is-4 is-parent">
-        <div class="deck tile is-child">
-          <div class="deck-title">
-            DECK TITLE
-          </div>
-          <div class="subject">
-            DECK SUBJECT
-          </div>
-          <div class="deck-buttons">
-            <button class="study">
-              STUDY
-            </button>
-            <button class="edit">
-              EDIT
-            </button>
-            <button class="quiz">
-              quiz yo self
-            </button>
-            <button class="deck-delete has-text-danger">
-              DELETE
-            </button>
-          </div>
+    {% for deck in user.decks.all %}
+    <div class="decks tile is-4 is-parent">
+      <div class="deck tile is-child">
+        <div class="deck-title">
+          {{ deck.title }}
         </div>
-      </div>
-      <div class="tile is-4 is-parent">
-        <div class="deck tile is-child">
-          <div class="deck-title">
-            DECK TITLE
-          </div>
-          <div class="subject">
-            DECK SUBJECT
-          </div>
-          <div class="deck-buttons">
-            <button class="study">
-              STUDY
-            </button>
-            <button class="edit">
-              EDIT
-            </button>
-            <button class="quiz">
-              quiz yo self
-            </button>
-            <button class="deck-delete has-text-danger">
-              DELETE
-            </button>
-          </div>
+        <div class="subject">
+          {{ deck.subject }}
         </div>
-      </div>
-      <div class="tile is-4 is-parent">
-        <div class="deck tile is-child">
-          <div class="deck-title">
-            DECK TITLE
+        <div class="deck-buttons">
+          <div class="button study">
+            <span>STUDY</span>
           </div>
-          <div class="subject">
-            DECK SUBJECT
+          <div class="button edit">
+            <span>EDIT</span>
           </div>
-          <div class="deck-buttons">
-            <button class="study">
-              STUDY
-            </button>
-            <button class="edit">
-              EDIT
-            </button>
-            <button class="quiz">
-              quiz yo self
-            </button>
-            <button class="deck-delete has-text-danger">
-              DELETE
-            </button>
+          <div class="button quiz">
+            <span>quiz yo self</span>
           </div>
-        </div>
-      </div>
-      <div class="tile is-4 is-parent">
-        <div class="deck tile is-child">
-          <div class="deck-title">
-            DECK TITLE
-          </div>
-          <div class="subject">
-            DECK SUBJECT
-          </div>
-          <div class="deck-buttons">
-            <button class="study">
-              STUDY
-            </button>
-            <button class="edit">
-              EDIT
-            </button>
-            <button class="quiz">
-              quiz yo self
-            </button>
-            <button class="deck-delete has-text-danger">
-              DELETE
-            </button>
+          <div class="button deck-delete has-text-danger">
+           <span>DELETE</span>
           </div>
         </div>
       </div>
     </div>
+    {% endfor %}
   </div>
 </div>
+
 {% endblock %}

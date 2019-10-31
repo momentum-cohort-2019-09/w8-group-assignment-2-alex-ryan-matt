@@ -70,7 +70,6 @@ def delete_deck(request, pk):
   Deck.objects.get(id=pk).delete()
   return redirect(to='flipasaurus/dashboard.html')
 
-@login_required(login_url='/accounts/login/')
 class UserViewSet(viewsets.ModelViewSet):
   """
   API endpoint that allows users to be viewed or edited.
@@ -78,7 +77,6 @@ class UserViewSet(viewsets.ModelViewSet):
   queryset = User.objects.all()
   serializer_class = UserSerializer
 
-@login_required(login_url='/accounts/login/')
 class CardViewSet(viewsets.ModelViewSet):
   """
   API endpoint that allows cards to be viewed or edited.
@@ -86,7 +84,6 @@ class CardViewSet(viewsets.ModelViewSet):
   queryset = Card.objects.all()
   serializer_class = CardSerializer
 
-@login_required(login_url='/accounts/login/')
 class DeckViewSet(viewsets.ModelViewSet):
   """
   API endpoint that allows decks to be viewed or edited.
