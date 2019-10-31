@@ -6,104 +6,32 @@
         </div>
     </div>
     <div class=" dashboard column auto tile is-ancestor">
-        <div class="decks tile is-parent">
-            <div class="tile is-4 is-parent">
-                <div class="deck tile is-child">
-                    <div class="deck-title">
-                        DECK TITLE
+        {% for deck in user.decks.all %}
+        <div class="decks tile is-4 is-parent">
+            <div class="deck tile is-child">
+                <div class="deck-title">
+                    {{ deck.title }}
+                </div>
+                <div class="subject">
+                    {{ deck.subject }}
+                </div>
+                <div class="deck-buttons">
+                    <div class="button study">
+                        <span>STUDY</span>
                     </div>
-                    <div class="subject">
-                        DECK SUBJECT
+                    <div class="button edit">
+                        <span>EDIT</span>
                     </div>
-                    <div class="deck-buttons">
-                        <button class="study">
-              STUDY
-            </button>
-                        <button class="edit">
-              EDIT
-            </button>
-                        <button class="quiz">
-              quiz yo self
-            </button>
-                        <button class="deck-delete has-text-danger">
-              DELETE
-            </button>
+                    <div class="button quiz">
+                        <span>quiz yo self</span>
+                    </div>
+                    <div class="button deck-delete has-text-danger">
+                        <span>DELETE</span>
                     </div>
                 </div>
             </div>
-            <div class="tile is-4 is-parent">
-                <div class="deck tile is-child">
-                    <div class="deck-title">
-                        DECK TITLE
-                    </div>
-                    <div class="subject">
-                        DECK SUBJECT
-                    </div>
-                    <div class="deck-buttons">
-                        <button class="study">
-                STUDY
-              </button>
-                        <button class="edit">
-                EDIT
-              </button>
-                        <button class="quiz">
-                quiz yo self
-              </button>
-                        <button class="deck-delete has-text-danger">
-                DELETE
-              </button>
-                    </div>
-                </div>
-            </div>
-            <div class="tile is-4 is-parent">
-                <div class="deck tile is-child">
-                    <div class="deck-title">
-                        DECK TITLE
-                    </div>
-                    <div class="subject">
-                        DECK SUBJECT
-                    </div>
-                    <div class="deck-buttons">
-                        <button class="study">
-                  STUDY
-                </button>
-                        <a href="{% url 'edit_deck' pk=1 %}"><button class="edit">
-                  EDIT
-                </button></a>
-                        <button class="quiz">
-                  quiz yo self
-                </button>
-                        <a href="{% url 'delete_deck' pk=1 %}"><button class="deck-delete has-text-danger">
-                  DELETE
-                </button></a>
-                    </div>
-                </div>
-            </div>
-            <div class="tile is-4 is-parent">
-                <div class="deck tile is-child">
-                    <div class="deck-title">
-                        DECK TITLE
-                    </div>
-                    <div class="subject">
-                        DECK SUBJECT
-                    </div>
-                    <div class="deck-buttons">
-                        <button class="study">
-                    STUDY
-                  </button>
-                        <button class="edit">
-                    EDIT
-                  </button>
-                        <button class="quiz">
-                    quiz yo self
-                  </button>
-                        <button class="deck-delete has-text-danger">
-                    DELETE
-                  </button>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
-</div>
-{% endblock %}
+
+    {% endblock %}
