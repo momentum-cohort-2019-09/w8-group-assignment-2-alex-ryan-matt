@@ -27,7 +27,7 @@ def create_deck(request):
       deck = form.save(commit=False)
       deck.owner = request.user
       deck.save()
-      return redirect('dashboard')
+      return redirect('view_deck', pk=deck.id)
   else:
     form = DeckForm()
   return render(request, 'flipasaurus/create_deck.html', {
@@ -35,7 +35,9 @@ def create_deck(request):
   })
 
 @login_required(login_url='/accounts/login/')
-def create_card(request):
+
+def view_deck(request, pk):
+  deck = Deck.objects.get(id=pk)
   if request.method == 'POST':
     form = CardForm(request.POST)
     if form.is_valid():
@@ -43,9 +45,21 @@ def create_card(request):
       return redirect('create_card')
   else:
     form = CardForm()
-  return render(request, 'flipasaurus/create_card.html', {
-    'form': form
-  })
+  return render(request, "flipasaurus/view_deck.html", {'deck': deck, 'form': form})
+
+
+def create_card(request):
+#   if request.method == 'POST':
+#     form = CardForm(request.POST)
+#     if form.is_valid():
+#       card = form.save(commit=False)
+#       return redirect('create_card')
+#   else:
+#     form = CardForm()
+#   return render(request, 'flipasaurus/create_card.html', {
+#     'form': form
+#   })
+  pass
 
 @login_required(login_url='/accounts/login/')
 def delete_card(request, pk):
@@ -113,4 +127,6 @@ def edit_card(request, pk):
     "card": card,
     "form": form,
   })
+
+
 

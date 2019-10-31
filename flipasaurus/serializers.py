@@ -11,7 +11,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class CardSerializer(serializers.HyperlinkedModelSerializer):
   class Meta:
     model = Card
-    fields = ['prompt', 'description','owner','correct_flips','incorrect_flips','success_rate', 'deck']
+    fields = ['prompt', 'description','owner','correct_flips','incorrect_flips','success_rate','deck']
 
 class DeckSerializer(serializers.HyperlinkedModelSerializer):
   cards = serializers.PrimaryKeyRelatedField(many=True, queryset=Card.objects.all())
