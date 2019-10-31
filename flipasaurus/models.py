@@ -21,20 +21,22 @@ class Card(models.Model):
 
   def __str__(self):
     return self.prompt
+    
+  def get_success_rate(self):
+    if self.incorrect_flips == 0:
+      return 100
+    else:
+      return self.correct_flips/self.incorrect_flips
 
 class Deck(models.Model):
   subject = models.CharField(max_length = 100, blank=True, null=True)
   title = models.CharField(max_length=100)
-  owner = models.ForeignKey(to=User, related_name='decks', on_delete=models.CASCADE, null=True, blank=True)
+  owner = models.ForeignKey(to=User, related_name='decks', on_delete='models.CASCADE', null=True, blank=True)
   public = models.BooleanField(default=True) #HYPE
   updated_at = models.DateTimeField(auto_now=True)
 
   def __str__(self):
     return self.title
-
-  def update(self):
-    self.updated_at = timezone.now()
-    self.save
 
 
 
