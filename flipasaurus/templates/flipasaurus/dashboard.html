@@ -1,111 +1,109 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <div class="columns">
-  <div class="sidebar column is-one-fifth">
-    <div class="create">
-      create a thing
+    <div class="sidebar column is-one-fifth">
+        <div class="create">
+            create a thing
+        </div>
     </div>
-  </div>
-  <div class="dashboard column auto tile is-ancestor">
-    <div class="decks tile is-parent">
-      <div class="tile is-4 is-parent">
-        <div class="deck tile is-child">
-          <div class="deck-title">
-            DECK TITLE
-          </div>
-          <div class="subject">
-            DECK SUBJECT
-          </div>
-          <div class="deck-buttons">
-            <button class="study">
+    <div class="dashboard column auto tile is-ancestor">
+        <div class="decks tile is-parent">
+            <div class="tile is-4 is-parent">
+                <div class="deck tile is-child">
+                    <div class="deck-title">
+                        DECK TITLE
+                    </div>
+                    <div class="subject">
+                        DECK SUBJECT
+                    </div>
+                    <div class="deck-buttons">
+                        <button class="study">
               STUDY
             </button>
-            <button class="edit">
+                        <button class="edit">
               EDIT
             </button>
-            <button class="quiz">
+                        <button class="quiz">
               quiz yo self
             </button>
-            <button class="deck-delete has-text-danger">
+                        <button class="deck-delete has-text-danger">
               DELETE
             </button>
-          </div>
-        </div>
-      </div>
-      <div class="tile is-4 is-parent">
-          <div class="deck tile is-child">
-            <div class="deck-title">
-              DECK TITLE
+                    </div>
+                </div>
             </div>
-            <div class="subject">
-              DECK SUBJECT
-            </div>
-            <div class="deck-buttons">
-              <button class="study">
+            <div class="tile is-4 is-parent">
+                <div class="deck tile is-child">
+                    <div class="deck-title">
+                        DECK TITLE
+                    </div>
+                    <div class="subject">
+                        DECK SUBJECT
+                    </div>
+                    <div class="deck-buttons">
+                        <button class="study">
                 STUDY
               </button>
-              <button class="edit">
+                        <button class="edit">
                 EDIT
               </button>
-              <button class="quiz">
+                        <button class="quiz">
                 quiz yo self
               </button>
-              <button class="deck-delete has-text-danger">
+                        <button class="deck-delete has-text-danger">
                 DELETE
               </button>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="tile is-4 is-parent">
-            <div class="deck tile is-child">
-              <div class="deck-title">
-                DECK TITLE
-              </div>
-              <div class="subject">
-                DECK SUBJECT
-              </div>
-              <div class="deck-buttons">
-                <button class="study">
+            <div class="tile is-4 is-parent">
+                <div class="deck tile is-child">
+                    <div class="deck-title">
+                        DECK TITLE
+                    </div>
+                    <div class="subject">
+                        DECK SUBJECT
+                    </div>
+                    <div class="deck-buttons">
+                        <button class="study">
                   STUDY
                 </button>
-                <button class="edit">
+                        <a href="{% url 'edit_deck' pk=1 %}"><button class="edit">
                   EDIT
-                </button>
-                <button class="quiz">
+                </button></a>
+                        <button class="quiz">
                   quiz yo self
                 </button>
-                <button class="deck-delete has-text-danger">
+                        <a href="{% url 'delete_deck' pk=1 %}"><button class="deck-delete has-text-danger">
                   DELETE
-                </button>
-              </div>
+                </button></a>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="tile is-4 is-parent">
-              <div class="deck tile is-child">
-                <div class="deck-title">
-                  DECK TITLE
-                </div>
-                <div class="subject">
-                  DECK SUBJECT
-                </div>
-                <div class="deck-buttons">
-                  <button class="study">
+            <div class="tile is-4 is-parent">
+                <div class="deck tile is-child">
+                    <div class="deck-title">
+                        DECK TITLE
+                    </div>
+                    <div class="subject">
+                        DECK SUBJECT
+                    </div>
+                    <div class="deck-buttons">
+                        <button class="study">
                     STUDY
                   </button>
-                  <button class="edit">
+                        <button class="edit">
                     EDIT
                   </button>
-                  <button class="quiz">
+                        <button class="quiz">
                     quiz yo self
                   </button>
-                  <button class="deck-delete has-text-danger">
+                        <button class="deck-delete has-text-danger">
                     DELETE
                   </button>
+                    </div>
                 </div>
-              </div>
             </div>
+        </div>
     </div>
-  </div>
 </div>
 {% endblock %}
