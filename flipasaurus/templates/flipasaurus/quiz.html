@@ -6,27 +6,40 @@
     }
 </style>
 <script>
+    let testCard = {
+        prompt: 'hello',
+        description: 'world',
+        correct_flips: 0,
+        incorrect_flips: 0,
+        success_rate: 0,
+    }
+    let cardsCorrect = [];
+    let cardsIncorrect = [];
+
     function flipCard() {
-        var card = document.getElementById('card');
-        if (card.innerHTML === 'Prompt') {
-            card.innerHTML = 'Description!';
+        console.log(testCard)
+        let card = document.getElementById('card');
+        if (card.innerHTML === testCard.prompt) {
+            card.innerHTML = testCard.description
         } else {
-            card.innerHTML = 'Prompt';
+            card.innerHTML = testCard.prompt;
         }
         document.getElementById('button').classList.toggle("hidden")
+        correctCard();
+        incorrectCard();
     }
 
     function correctCard() {
         document.getElementById('correct').addEventListener('click', function(event) {
             event.preventDefault()
 
-            let cardsCorrect = [];
 
-            let correct = 0
-            for (card of deck) {
-                correct += 1
-                cardsCorrect.push(card)
-            }
+
+
+            testCard.correct_flips += 1
+            cardsCorrect.push(testCard)
+            console.log(cardsCorrect, 'correct')
+
         })
     }
 
@@ -34,13 +47,13 @@
         document.getElementById('incorrect').addEventListener('click', function(event) {
             event.preventDefault()
 
-            let cardsIncorrect = [];
 
-            let incorrect = 0
-            for (card of deck) {
-                incorrect += 1
-                cardsIncorrect.push(card)
-            }
+
+
+            testCard.incorrect_flips += 1
+            cardsIncorrect.push(testCard)
+            console.log(cardsIncorrect, 'incorrect')
+
 
         })
     }
@@ -51,10 +64,13 @@
 </div>
 
 
-<p id='card' onclick="flipCard()">Prompt</p>
+<p id='card' onclick="flipCard()"></p>
+<script>
+    document.getElementById('card').innerHTML = testCard.prompt
+</script>
 <div class="hidden" id="button">
-    <button>Correct</button>
-    <button>Incorrect</button>
+    <button id="correct">Correct</button>
+    <button id="incorrect">Incorrect</button>
 </div>
 
 
