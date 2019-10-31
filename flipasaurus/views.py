@@ -32,7 +32,7 @@ def create_card(request):
   if request.method == 'POST':
     form = CardForm(request.POST)
     if form.is_valid():
-      card = form.save(deck.pk )
+      card = form.save(commit=False)
       return redirect('create_card')
   else:
     form = CardForm()

@@ -28,6 +28,7 @@ class Deck(models.Model):
   owner = models.ForeignKey(to=User, related_name='deck', on_delete=models.CASCADE, null=True, blank=True)
   public = models.BooleanField(default=True) #HYPE
   updated_at = models.DateTimeField(default=timezone.now)
+  
 
   def __str__(self):
     return self.title
