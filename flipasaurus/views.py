@@ -6,6 +6,7 @@ from django.views.generic.edit import FormView
 from rest_framework import viewsets
 from flipasaurus.serializers import UserSerializer, CardSerializer, DeckSerializer
 from rest_framework.decorators import action
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -13,9 +14,11 @@ from rest_framework.decorators import action
 def test(request):
   return render(request, 'base.html')
 
+@login_required(login_url='/accounts/login/')
 def dashboard(request):
   return render(request, 'flipasaurus/dashboard.html')
-  
+
+@login_required(login_url='/accounts/login/')  
 def create_deck(request):
   if request.method == 'POST':
     form = DeckForm(request.POST)
@@ -28,6 +31,7 @@ def create_deck(request):
     'form': form
   })
 
+@login_required(login_url='/accounts/login/')
 def create_card(request):
   if request.method == 'POST':
     form = CardForm(request.POST)
@@ -40,10 +44,12 @@ def create_card(request):
     'form': form
   })
 
+@login_required(login_url='/accounts/login/')
 def delete_card(request, pk):
   Card.objects.get(id=pk).delete()
   return redirect(to='flipasaurus/edit_deck.html')
 
+@login_required(login_url='/accounts/login/')
 def edit_deck(request, pk):
   deck = get_object_or_404(Deck, id=pk)
   if request.method == 'POST':
@@ -58,7 +64,8 @@ def edit_deck(request, pk):
     'deck': deck,
     'form': form
   })
-    
+
+@login_required(login_url='/accounts/login/')    
 def delete_deck(request, pk):
   Deck.objects.get(id=pk).delete()
   return redirect(to='flipasaurus/dashboard.html')
@@ -77,7 +84,6 @@ class CardViewSet(viewsets.ModelViewSet):
   queryset = Card.objects.all()
   serializer_class = CardSerializer
 
-
 class DeckViewSet(viewsets.ModelViewSet):
   """
   API endpoint that allows decks to be viewed or edited.
@@ -85,6 +91,7 @@ class DeckViewSet(viewsets.ModelViewSet):
   queryset = Deck.objects.all()
   serializer_class = DeckSerializer
 
+@login_required(login_url='/accounts/login/')
 def edit_card(request, pk):
   card = get_object_or_404(Card, pk=pk)
 
