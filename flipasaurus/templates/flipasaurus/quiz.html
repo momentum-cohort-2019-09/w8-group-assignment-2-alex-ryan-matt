@@ -1,0 +1,68 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="header_quiz">
+    <h2>Quiz</h2>
+</div>
+
+<p id='card' onclick="flipCard()">Prompt</p>
+<button class="correct">Correct</button>
+<button class="incorrect">Incorrect</button>
+
+<script>
+    function flipCard() {
+        document.getElementById('card').innerHTML = 'Description!';
+        var correct_button = document.getElementById('correct');
+        if (correct_button.style.display === 'none') {
+            correct_button.style.display = 'block';
+        } else {
+            correct_button.style.display = 'none';
+        }
+    }
+
+    function correctCard() {
+        document.getElementById('correct').addEventListener('click', function(event) {
+            event.preventDefault()
+
+            let cardsCorrect = [];
+
+            let correct = 0
+            for (card of deck) {
+                correct += 1
+                cardsCorrect.push(card)
+            }
+        })
+    }
+
+    function incorrectCard() {
+        document.getElementById('incorrect').addEventListener('click', function(event) {
+            event.preventDefault()
+
+            let cardsIncorrect = [];
+
+            let incorrect = 0
+            for (card of deck) {
+                incorrect += 1
+                cardsIncorrect.push(card)
+            }
+
+        })
+    }
+</script>
+
+
+<div class="body_quiz">
+    <div class="card">
+        <div class="front">
+            <div id="body_front">
+                <div class="card_prompt">Prompt</div>
+            </div>
+        </div>
+        <div class="back">
+            <div id="body_back">
+                <div class="card_description">Description</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
