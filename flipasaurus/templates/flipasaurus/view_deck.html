@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+{{ deck.title }}
+{% endblock %}
+
+{% block content %}
+<h2> Deck Title: {{ deck.title }} </h2>
+<h3> Deck Subject: {{ deck.subject }} </h3>
+<div class="cards_wrapper">
+  <ul class="cards">
+    {% for cards in deck.cards.all %}
+    <li>
+      <div class="card_list" id="card.id">
+        {{ card.id }}
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+
+  <div class="create_card">
+    <h2>Create Card:</h2>
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Create"></input>
+    </form>
+  </div>
+</div>
+{% endblock %}
