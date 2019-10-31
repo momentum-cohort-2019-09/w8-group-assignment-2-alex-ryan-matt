@@ -31,7 +31,7 @@ class Card(models.Model):
 class Deck(models.Model):
   subject = models.CharField(max_length = 100, blank=True, null=True)
   title = models.CharField(max_length=100)
-  owner = models.ForeignKey(to=User, related_name='decks', on_delete=models.CASCADE, null=True, blank=True)
+  owner = models.ForeignKey(to=User, related_name='decks', on_delete='models.CASCADE', null=True, blank=True)
   public = models.BooleanField(default=True) #HYPE
   updated_at = models.DateTimeField(auto_now=True)
 
