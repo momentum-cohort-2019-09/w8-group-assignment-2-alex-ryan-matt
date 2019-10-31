@@ -25,6 +25,8 @@ def create_deck(request):
     form = DeckForm(request.POST)
     if form.is_valid():
       deck = form.save(commit=False)
+      deck.owner = request.user
+      deck.save()
       return redirect('dashboard')
   else:
     form = DeckForm()

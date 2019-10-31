@@ -49,3 +49,7 @@
   color: white;
   transition: all .2s ease;
 }
+
+.is-ancestor{
+  flex-wrap:wrap;
+}
