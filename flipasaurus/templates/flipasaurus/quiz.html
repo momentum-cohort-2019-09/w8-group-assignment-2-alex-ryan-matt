@@ -1,22 +1,19 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="header_quiz">
-    <h2>Quiz</h2>
-</div>
-
-<p id='card' onclick="flipCard()">Prompt</p>
-<button class="correct">Correct</button>
-<button class="incorrect">Incorrect</button>
-
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
 <script>
     function flipCard() {
-        document.getElementById('card').innerHTML = 'Description!';
-        var correct_button = document.getElementById('correct');
-        if (correct_button.style.display === 'none') {
-            correct_button.style.display = 'block';
+        var card = document.getElementById('card');
+        if (card.innerHTML === 'Prompt') {
+            card.innerHTML = 'Description!';
         } else {
-            correct_button.style.display = 'none';
+            card.innerHTML = 'Prompt';
         }
+        document.getElementById('button').classList.toggle("hidden")
     }
 
     function correctCard() {
@@ -49,8 +46,19 @@
     }
 </script>
 
+<div class="header_quiz">
+    <h2>Quiz</h2>
+</div>
 
-<div class="body_quiz">
+
+<p id='card' onclick="flipCard()">Prompt</p>
+<div class="hidden" id="button">
+    <button>Correct</button>
+    <button>Incorrect</button>
+</div>
+
+
+<!-- <div class="body_quiz">
     <div class="card">
         <div class="front">
             <div id="body_front">
@@ -63,6 +71,6 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 {% endblock %}
