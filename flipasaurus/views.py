@@ -23,8 +23,8 @@ def create_deck(request):
   if request.method == 'POST':
     form = DeckForm(request.POST)
     if form.is_valid():
-      deck = form.save()
-      return redirect(to=deck)
+      deck = form.save(commit=False)
+      return redirect('dashboard')
   else:
     form = DeckForm()
   return render(request, 'flipasaurus/create_deck.html', {
@@ -36,8 +36,8 @@ def create_card(request):
   if request.method == 'POST':
     form = CardForm(request.POST)
     if form.is_valid():
-      card = form.save()
-      return redirect(to=card)
+      card = form.save(commit=False)
+      return redirect('create_card')
   else:
     form = CardForm()
   return render(request, 'flipasaurus/create_card.html', {
