@@ -16,9 +16,9 @@ from flipasaurus.permissions import IsOwnerOrReadOnly, IsUserOrReadOnly
 # Create your views here.
 
 
-def deck_test(request):
-  deck = DeckSerializer(Deck.objects.get(pk=4))
-  return render(request, 'flipasaurus/test_view.html', {'deck':deck.data})
+def deck_test(request, pk):
+  deck = DeckSerializer(Deck.objects.get(pk=pk))
+  return render(request, 'flipasaurus/test_view.html', {'deck':deck})
 
 @login_required(login_url='/accounts/login/')
 def dashboard(request):
