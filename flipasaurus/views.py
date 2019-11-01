@@ -7,6 +7,9 @@ from rest_framework import viewsets, permissions
 from flipasaurus.serializers import UserSerializer, CardSerializer, DeckSerializer
 from rest_framework.decorators import action
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
+import json
 from flipasaurus.permissions import IsOwnerOrReadOnly, IsUserOrReadOnly
 
 
@@ -22,6 +25,7 @@ def dashboard(request):
   return render(request, 'flipasaurus/dashboard.html')
 
 @login_required(login_url='/accounts/login/')  
+@csrf_exempt
 def create_deck(request):
   if request.method == 'POST':
     form = DeckForm(request.POST)
@@ -36,32 +40,42 @@ def create_deck(request):
     'form': form
   })
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login')
+@csrf_exempt
+def artisanal_create_card(request, pk):
+  deck = get_object_or_404(Deck, pk=pk)
+  if request.method=='POST':
+    response_data = {}
+    form_data = json.loads(request.body)
+    prompt = form_data['prompt']
+    description = form_data['description']
+    card = Card(prompt=prompt, description=description, owner=request.user, deck=deck)
+    card.save()
+    
+    response_data['result'] = 'Success!'
+    response_data['deckpk'] = deck.id
+    response_data['prompt'] = card.prompt
+    response_data['description'] = card.description
+    response_data['owner'] = card.owner.username
 
+    return HttpResponse(
+      json.dumps(response_data),
+      content_type="application/json"
+    )
+  else:
+    return HttpResponse(
+      json.dumps({'nothing to see':'this is not happening'}),
+      content_type="application/json"
+    )
+
+  
+
+@login_required(login_url='/accounts/login/')
+@csrf_exempt
 def view_deck(request, pk):
   deck = Deck.objects.get(id=pk)
-  if request.method == 'POST':
-    form = CardForm(request.POST)
-    if form.is_valid():
-      card = form.save(commit=False)
-      return redirect('create_card')
-  else:
-    form = CardForm()
+  form = CardForm()
   return render(request, "flipasaurus/view_deck.html", {'deck': deck, 'form': form})
-
-
-def create_card(request):
-#   if request.method == 'POST':
-#     form = CardForm(request.POST)
-#     if form.is_valid():
-#       card = form.save(commit=False)
-#       return redirect('create_card')
-#   else:
-#     form = CardForm()
-#   return render(request, 'flipasaurus/create_card.html', {
-#     'form': form
-#   })
-  pass
 
 @login_required(login_url='/accounts/login/')
 def delete_card(request, pk):

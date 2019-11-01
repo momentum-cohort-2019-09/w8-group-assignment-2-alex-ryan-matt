@@ -8,9 +8,14 @@
     background: palevioletred;
 }
 
-.sidebar {
-    background: purple;
-    color: white;
+.is-size-2 {
+  font-family: 'Fredoka One', cursive;
+  color: white;
+}
+
+.sidebar{
+  background:purple;
+  color:white;
 }
 
 .columns {

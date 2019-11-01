@@ -30,13 +30,13 @@ urlpatterns = [
     path('accounts/', include('registration.backends.simple.urls')),
     path('', views.dashboard, name='dashboard'),
     path('flipasaurus/create_deck/', views.create_deck, name='create_deck'),
-    path('flipasaurus/create_card/', views.create_card, name='create_card'),
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('flipasaurus/<int:pk>/delete', views.delete_card, name='delete_card'),
     path('flipasaurus/<int:pk>/edit_deck', views.edit_deck, name='edit_deck'),
     path('flipasaurus/<int:pk>/delete_deck', views.delete_deck, name='delete_deck'),
     path('flipasaurus/<int:pk>/edit/', views.edit_card, name="edit_card"),
+    path('api/deck/<int:pk>/artisanal_card_create', views.artisanal_create_card, name='create_card')
     path('flipasaurus/<int:pk>/quiz', views.quiz, name="quiz"),
     path('flipasaurus/<int:pk>/view_deck', views.view_deck, name="view_deck"),
     path('testing/', views.deck_test, name="test")

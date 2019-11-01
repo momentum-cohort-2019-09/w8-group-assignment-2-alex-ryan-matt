@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 
 {% block title %}
@@ -21,10 +22,10 @@
 
   <div class="create_card">
     <h2>Create Card:</h2>
-    <form method="POST">
+    <form method="POST" id="actual_thing_we_want" data-deck_id={{deck.pk}}>
       {% csrf_token %}
       {{ form.as_p }}
-      <input type="submit" value="Create"></input>
+      <button type="submit" class="create_button_foreal">Submit</button>
     </form>
   </div>
 </div>
