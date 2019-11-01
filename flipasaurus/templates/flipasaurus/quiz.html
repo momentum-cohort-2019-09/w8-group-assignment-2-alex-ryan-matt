@@ -7,23 +7,32 @@
 </style>
 
 <script>
-    let testCard = {
-        prompt: 'hello',
-        description: 'world',
-        correct_flips: 0,
-        incorrect_flips: 0,
-        success_rate: 0,
+    let testDeck = {
+        testCard: {
+            prompt: 'hello',
+            description: 'world',
+            correct_flips: 0,
+            incorrect_flips: 0,
+            success_rate: 0,
+        },
+        cardTwo: {
+            prompt: 'Prompt',
+            description: 'Description',
+            correct_flips: 0,
+            incorrect_flips: 0,
+            success_rate: 0,
+        }
     }
     let cardsCorrect = [];
     let cardsIncorrect = [];
 
     function flipCard() {
-        console.log(testCard)
+        console.log(testDeck)
         let card = document.getElementById('card');
-        if (card.innerHTML === testCard.prompt) {
-            card.innerHTML = testCard.description
+        if (card.innerHTML === testDeck.testCard.prompt) {
+            card.innerHTML = testDeck.testCard.description
         } else {
-            card.innerHTML = testCard.prompt;
+            card.innerHTML = testDeck.testCard.prompt;
         }
         document.getElementById('button').classList.toggle("hidden")
         correctCard();
@@ -61,7 +70,7 @@
 
 <p id='card' onclick="flipCard()"></p>
 <script>
-    document.getElementById('card').innerHTML = testCard.prompt
+    document.getElementById('card').innerHTML = testDeck.testCard.prompt
 </script>
 <div class="hidden" id="button">
     <button id="correct">Correct</button>
