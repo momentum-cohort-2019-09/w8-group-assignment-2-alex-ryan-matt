@@ -8,6 +8,8 @@ from flipasaurus.serializers import UserSerializer, CardSerializer, DeckSerializ
 from rest_framework.decorators import action
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
+import json
 
 
 # Create your views here.
@@ -39,9 +41,10 @@ def artisanal_create_card(request, pk):
   deck = get_object_or_404(Deck, pk=pk)
   if request.method=='POST':
     response_data = {}
-    prompt = request.POST.get('prompt')
-    description = request.POST.get('description')
-    card = Card(prompt=prompt, description=description, owner=request.user)
+    form_data = json.loads(request.body)
+    prompt = form_data['prompt']
+    description = form_data['description']
+    card = Card(prompt=prompt, description=description, owner=request.user, deck=deck)
     card.save()
     
     response_data['result'] = 'Success!'
@@ -55,7 +58,7 @@ def artisanal_create_card(request, pk):
       content_type="application/json"
     )
   else:
-    return HTTPResponse(
+    return HttpResponse(
       json.dumps({'nothing to see':'this is not happening'}),
       content_type="application/json"
     )
