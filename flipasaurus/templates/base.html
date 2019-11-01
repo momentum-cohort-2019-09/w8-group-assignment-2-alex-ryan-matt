@@ -1,5 +1,6 @@
 {% load static %}
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +14,9 @@
   {% font_awesome %}
   {% block meta %}{% endblock %}
   <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
+  <script defer src="{% static 'mr-scripty.js' %}"></script>
+
   <script src="{% static 'flipasaurus.js' %}" defer></script>
 </head>
 
@@ -41,23 +45,16 @@
               <a class="button is-primary" href='/'>
                 <strong>{{ user }}'s Dashboard</strong>
               </a>
-              <a class="button is-light" href="{% url 'auth_logout' %}">
-                Log Out
+              <a class="button is-light">
+                Log in
               </a>
             </div>
-            {% else %}
-            <a class="button is-primary" href="{% url 'auth_login' %}">
-              <strong>Log In</strong>
-            </a>
           </div>
-          {% endif %}
-
         </div>
       </div>
-  </div>
-  </nav>
-  {% block content %}
-  {% endblock %}
+    </nav>
+    {% block content %}
+    {% endblock %}
   </div>
 </body>
 
