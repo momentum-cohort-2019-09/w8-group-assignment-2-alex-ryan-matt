@@ -132,6 +132,6 @@ def edit_card(request, pk):
 
 @login_required(login_url='/accounts/login/')
 def quiz(request, pk):
-  deck = get_object_or_404(Deck, pk=pk)
+  deck = DeckSerializer(Deck.objects.get(pk=pk))
   return render(request, 'flipasaurus/quiz.html', {'deck': deck})
 

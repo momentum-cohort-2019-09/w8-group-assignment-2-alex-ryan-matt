@@ -1,96 +1,17 @@
-{% extends 'base.html' %} {% block content %}
-
-<style>
-    .hidden {
-        display: none;
-    }
-</style>
-
-<script>
-    let testDeck = {
-        testCard: {
-            prompt: 'hello',
-            description: 'world',
-            correct_flips: 0,
-            incorrect_flips: 0,
-            success_rate: 0,
-        },
-        cardTwo: {
-            prompt: 'Prompt',
-            description: 'Description',
-            correct_flips: 0,
-            incorrect_flips: 0,
-            success_rate: 0,
-        }
-    }
-    let cardsCorrect = [];
-    let cardsIncorrect = [];
-
-    function flipCard() {
-        console.log(testDeck)
-        let card = document.getElementById('card');
-        if (card.innerHTML === testDeck.testCard.prompt) {
-            card.innerHTML = testDeck.testCard.description
-        } else {
-            card.innerHTML = testDeck.testCard.prompt;
-        }
-        document.getElementById('button').classList.toggle("hidden")
-        correctCard();
-        incorrectCard();
-    }
-
-    function correctCard() {
-        document.getElementById('correct').addEventListener('click', function(event) {
-            event.preventDefault()
-
-            testCard.correct_flips += 1
-            cardsCorrect.push(testCard)
-            console.log(cardsCorrect, 'correct')
-
-        })
-    }
-
-    function incorrectCard() {
-        document.getElementById('incorrect').addEventListener('click', function(event) {
-            event.preventDefault()
-
-            testCard.incorrect_flips += 1
-            cardsIncorrect.push(testCard)
-            console.log(cardsIncorrect, 'incorrect')
-
-
-        })
-    }
-</script>
+{% extends 'base.html'%} {% load static %} {% block content %} {{ deck.data|json_script:"data" }}
 
 <div class="header_quiz">
     <h2>Quiz</h2>
 </div>
 
-
-<p id='card' onclick="flipCard()"></p>
-<script>
-    document.getElementById('card').innerHTML = testDeck.testCard.prompt
-</script>
+<p id='card' onclick="flipCard(deck)"></p>
+<!-- <script>
+    document.getElementById('card').innerHTML = deck.cards[0].prompt
+</script> -->
 <div class="hidden" id="button">
     <button id="correct">Correct</button>
     <button id="incorrect">Incorrect</button>
 </div>
 
-
-<!-- <div class="body_quiz">
-    <div class="card">
-        <div class="front">
-            <div id="body_front">
-                <div class="card_prompt">Prompt</div>
-            </div>
-        </div>
-        <div class="back">
-            <div id="body_back">
-                <div class="card_description">Description</div>
-            </div>
-        </div>
-    </div>
-</div> -->
-
+<script src="{% static 'quiz.js' %}" defer></script>
 {% endblock %}
