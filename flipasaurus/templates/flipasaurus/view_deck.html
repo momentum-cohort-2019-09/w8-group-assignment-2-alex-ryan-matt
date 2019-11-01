@@ -22,10 +22,10 @@
 
   <div class="create_card">
     <h2>Create Card:</h2>
-    <form method="POST" id="actual_thing_we_want">
+    <form method="POST">
       {% csrf_token %}
       {{ form.as_p }}
-      <input type="submit" class="create_button_foreal" value="MISTERCreate"></input>
+      <button type="submit" class="create_button_foreal" value="MISTERCreate" id="actual_thing_we_want">Submit</button>
     </form>
   </div>
 </div>
