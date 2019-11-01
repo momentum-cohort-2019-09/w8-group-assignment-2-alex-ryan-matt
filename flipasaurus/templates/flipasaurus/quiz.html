@@ -5,6 +5,7 @@
         display: none;
     }
 </style>
+
 <script>
     let testCard = {
         prompt: 'hello',
@@ -33,9 +34,6 @@
         document.getElementById('correct').addEventListener('click', function(event) {
             event.preventDefault()
 
-
-
-
             testCard.correct_flips += 1
             cardsCorrect.push(testCard)
             console.log(cardsCorrect, 'correct')
@@ -46,9 +44,6 @@
     function incorrectCard() {
         document.getElementById('incorrect').addEventListener('click', function(event) {
             event.preventDefault()
-
-
-
 
             testCard.incorrect_flips += 1
             cardsIncorrect.push(testCard)
