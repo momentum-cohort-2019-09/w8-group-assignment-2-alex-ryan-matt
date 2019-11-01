@@ -20,6 +20,7 @@ def dashboard(request):
   return render(request, 'flipasaurus/dashboard.html')
 
 @login_required(login_url='/accounts/login/')  
+@csrf_exempt
 def create_deck(request):
   if request.method == 'POST':
     form = DeckForm(request.POST)
@@ -31,6 +32,35 @@ def create_deck(request):
   return render(request, 'flipasaurus/create_deck.html', {
     'form': form
   })
+
+@login_required(login_url='/accounts/login')
+@csrf_exempt
+def artisanal_create_card(request, pk):
+  deck = get_object_or_404(Deck, pk=pk)
+  if request.method=='POST':
+    response_data = {}
+    prompt = request.POST.get('prompt')
+    description = request.POST.get('description')
+    card = Card(prompt=prompt, description=description, owner=request.user)
+    card.save()
+    
+    response_data['result'] = 'Success!'
+    response_data['deckpk'] = deck.id
+    response_data['prompt'] = card.prompt
+    response_data['description'] = card.description
+    response_data['owner'] = card.owner.username
+
+    return HttpResponse(
+      json.dumps(response_data),
+      content_type="application/json"
+    )
+  else:
+    return HTTPResponse(
+      json.dumps({'nothing to see':'this is not happening'}),
+      content_type="application/json"
+    )
+
+  
 
 @login_required(login_url='/accounts/login/')
 @csrf_exempt

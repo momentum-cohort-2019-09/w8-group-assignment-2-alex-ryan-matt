@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-<script defer src="{% static 'mr-scripty.js' %}"></script>
+
 
 {% block title %}
 {{ deck.title }}
@@ -22,7 +22,7 @@
 
   <div class="create_card">
     <h2>Create Card:</h2>
-    <form method="POST">
+    <form method="POST" id="actual_thing_we_want">
       {% csrf_token %}
       {{ form.as_p }}
       <input type="submit" class="create_button_foreal" value="MISTERCreate"></input>
