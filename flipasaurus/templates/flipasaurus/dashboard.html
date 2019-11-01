@@ -1,40 +1,42 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <div class="columns">
-  <div class="sidebar column is-one-fifth">
-    <div class="create">
-      <a class="create_deck" href="{% url 'create_deck' %}">create a thing!</a>
+    <div class="sidebar column is-one-fifth">
+        <div class="create">
+            <a class="create_deck" href="{% url 'create_deck' %}">create a thing!</a>
+        </div>
     </div>
-  </div>
-  <div class=" dashboard column auto tile is-ancestor">
-    {% for deck in user.decks.all %}
-    <div class="decks tile is-4 is-parent">
-      <div class="deck tile is-child">
-        <div class="deck-title">
-          {{ deck.title }}
+    <div class=" dashboard column auto tile is-ancestor">
+        {% for deck in user.decks.all %}
+        <div class="decks tile is-4 is-parent">
+            <div class="deck tile is-child">
+                <div class="deck-title">
+                    {{ deck.title }}
+                </div>
+                <div class="subject">
+                    {{ deck.subject }}
+                </div>
+                <div class="deck-buttons">
+                    <div class="button study">
+                        <span>STUDY</span>
+                    </div>
+                    <div class="button edit">
+                        <span>EDIT</span>
+                    </div>
+                    <div class="button quiz">
+                        <!-- <span>quiz yo self</span> -->
+                        <p>
+                            <a href="{% url 'quiz' pk=deck.pk %}">Quiz</a></p>
+                    </div>
+                    <div class="button deck-delete has-text-danger">
+                        <!-- <span>DELETE</span> -->
+                        <p>
+                            <a href="{% url 'delete_deck' pk=deck.pk %}">DELETE</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
-        <div class="subject">
-          {{ deck.subject }}
-        </div>
-        <div class="deck-buttons">
-          <div class="button study">
-            <span>STUDY</span>
-          </div>
-          <div class="button edit">
-            <span>EDIT</span>
-          </div>
-          <div class="button quiz">
-            <span>quiz yo self</span>
-          </div>
-          <div class="button deck-delete has-text-danger">
-           <span>DELETE</span>
-          </div>
-        </div>
-      </div>
     </div>
-    {% endfor %}
-  </div>
-</div>
 
-{% endblock %}
+    {% endblock %}
