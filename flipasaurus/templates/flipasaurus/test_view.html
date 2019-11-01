@@ -1,0 +1,7 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div class='test-div'>
+  {{ deck|json_script:"data" }}
+</div>
+{% endblock %}
