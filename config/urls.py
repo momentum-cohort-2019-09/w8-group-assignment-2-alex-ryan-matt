@@ -39,7 +39,7 @@ urlpatterns = [
     path('flipasaurus/<int:pk>/edit/', views.edit_card, name="edit_card"),
     path('flipasaurus/<int:pk>/quiz', views.quiz, name="quiz"),
     path('flipasaurus/<int:pk>/view_deck', views.view_deck, name="view_deck"),
-    path('testing/', views.deck_test, name="test")
+    path('flipasaurus/<int:pk>/testing/', views.deck_test, name="test")
 ]
 if settings.DEBUG:
     import debug_toolbar
