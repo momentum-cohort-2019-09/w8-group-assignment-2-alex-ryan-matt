@@ -31,18 +31,18 @@
     background: rgb(168, 233, 227);
     padding: 6px;
     margin-bottom: 5px;
-}
-
-.decks {
-    flex-wrap: wrap;
-}
-
-.is-child {
     box-shadow: 2px 3px 9px 3px lightslategray;
     border-radius: 5px;
     margin-bottom: 5px;
 }
 
+.decks {
+    flex-wrap: wrap;
+}
+.card {
+    border-radius:2px;
+    background:palegoldenrod;
+}
 .button {
     padding: 5px;
     height: 1.5rem;
@@ -61,10 +61,15 @@
     transition: all .2s ease;
 }
 
-.is-ancestor {
+.section .is-ancestor {
     flex-wrap: wrap;
+    margin:0;
 }
 
 .hidden {
     display: none;
+}
+
+.line{
+  border: 1px solid black;
 }

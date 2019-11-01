@@ -2,10 +2,34 @@
 {% load static %}
 
 {% block content %}
-{{ deck|json_script:"data" }}
+
+{{ deck.data|json_script:"data" }}
 <div class='test-div'>
-  
+
 </div>
+<div class="section">
+  {% for card in deck.data.cards %}
+<div class='card tile is-ancestor'>
+  <div class="tile">
+    <div class='tile is-parent'>
+      <div class="tile is-child">
+        {{ card.prompt }}
+      </div>
+    </div>
+  </div>
+  <span class="line"></span>
+  <div class="tile">
+    <div class='tile is-parent'>
+      <div class="tile is-child">
+        {{ card.description }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endfor %}
+</div>
+
 
 <script src="{% static 'card_display.js' %}" defer></script>
 {% endblock %}

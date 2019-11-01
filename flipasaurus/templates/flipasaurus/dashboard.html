@@ -17,7 +17,7 @@
                 </div>
                 <div class="deck-buttons">
                     <div class="button study">
-                        <span>STUDY</span>
+                        <a href="{% url 'test' pk=deck.pk %}">STUDY</a>
                     </div>
                     <div class="button edit">
                         <span>EDIT</span>
@@ -35,8 +35,9 @@
                     </div>
                 </div>
             </div>
-            {% endfor %}
         </div>
+        {% endfor %}
     </div>
+</div>
 
-    {% endblock %}
+{% endblock %}

@@ -14,6 +14,13 @@ function listCards(deck) {
 
 function render(card){
   container.innerHTML = `
-  
+  <div>
+    <div>
+      ${card.prompt}
+    </div>
+    <div>
+      ${card.description}
+    </div>
+  </div>
   `
 }
