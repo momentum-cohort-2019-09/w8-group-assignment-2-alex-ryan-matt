@@ -1,11 +1,11 @@
 * {
-  padding:0;
-  margin:0;
-  box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-.header{
-  background:palevioletred;
+.header {
+    background: palevioletred;
 }
 
 .is-size-2 {
@@ -17,40 +17,54 @@
   background:purple;
   color:white;
 }
-.columns{
-  align-items:stretch;
-  margin:0
-}
-.column{
-  margin:0
-}
-.deck{
-  background:rgb(168, 233, 227);
-  padding:6px;
-  margin-bottom:5px;
-}
-.decks{
-  flex-wrap: wrap;
+
+.columns {
+    align-items: stretch;
+    margin: 0
 }
 
-.is-child{
-  box-shadow: 2px 3px 9px 3px lightslategray;
-  border-radius: 5px;
-  margin-bottom: 5px;
+.column {
+    margin: 0
 }
-.button{
-  padding:5px;
-  height:1.5rem;
-  margin-top:.5rem;
+
+.deck {
+    background: rgb(168, 233, 227);
+    padding: 6px;
+    margin-bottom: 5px;
 }
+
+.decks {
+    flex-wrap: wrap;
+}
+
+.is-child {
+    box-shadow: 2px 3px 9px 3px lightslategray;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.button {
+    padding: 5px;
+    height: 1.5rem;
+    margin-top: .5rem;
+}
+
 .create_deck {
-  text-decoration: none;
-  color: white;
-  font-weight: 500;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
 }
 
 .create_deck:hover {
-  font-weight: 700;
-  color: white;
-  transition: all .2s ease;
+    font-weight: 700;
+    color: white;
+    transition: all .2s ease;
+}
+
+.is-ancestor {
+    flex-wrap: wrap;
+}
+
+.hidden {
+    display: none;
 }

@@ -3,19 +3,22 @@ from flipasaurus.models import User, Card, Deck
 from .forms import DeckForm, CardForm
 from django.http import HttpResponse
 from django.views.generic.edit import FormView
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 from flipasaurus.serializers import UserSerializer, CardSerializer, DeckSerializer
 from rest_framework.decorators import action
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 import json
+from flipasaurus.permissions import IsOwnerOrReadOnly, IsUserOrReadOnly
 
 
 # Create your views here.
 
-def test(request):
-  return render(request, 'base.html')
+
+def deck_test(request):
+  deck = DeckSerializer(Deck.objects.get(pk=4))
+  return render(request, 'flipasaurus/test_view.html', {'deck':deck.data})
 
 @login_required(login_url='/accounts/login/')
 def dashboard(request):
@@ -27,7 +30,9 @@ def create_deck(request):
   if request.method == 'POST':
     form = DeckForm(request.POST)
     if form.is_valid():
-      deck = form.save()
+      deck = form.save(commit=False)
+      deck.owner = request.user
+      deck.save()
       return redirect('view_deck', pk=deck.id)
   else:
     form = DeckForm()
@@ -104,6 +109,7 @@ class UserViewSet(viewsets.ModelViewSet):
   """
   queryset = User.objects.all()
   serializer_class = UserSerializer
+  permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsUserOrReadOnly]
 
 class CardViewSet(viewsets.ModelViewSet):
   """
@@ -111,6 +117,7 @@ class CardViewSet(viewsets.ModelViewSet):
   """
   queryset = Card.objects.all()
   serializer_class = CardSerializer
+  permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
 
 class DeckViewSet(viewsets.ModelViewSet):
   """
@@ -118,6 +125,7 @@ class DeckViewSet(viewsets.ModelViewSet):
   """
   queryset = Deck.objects.all()
   serializer_class = DeckSerializer
+  permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
 
 @login_required(login_url='/accounts/login/')
 def edit_card(request, pk):
@@ -136,5 +144,8 @@ def edit_card(request, pk):
     "form": form,
   })
 
-
+@login_required(login_url='/accounts/login/')
+def quiz(request, pk):
+  deck = get_object_or_404(Deck, pk=pk)
+  return render(request, 'flipasaurus/quiz.html', {'deck': deck})
 
