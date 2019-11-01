@@ -129,7 +129,7 @@ def edit_card(request, pk):
   })
 
 @login_required(login_url='/accounts/login/')
-def quiz(request, deck_pk):
-  deck = get_object_or_404(Deck, pk=deck_pk)
-  return redirect(to='flipasaurus/quiz.html', {'deck': deck})
+def quiz(request, pk):
+  deck = get_object_or_404(Deck, pk=pk)
+  return render(request, 'flipasaurus/quiz.html', {'deck': deck})
 
