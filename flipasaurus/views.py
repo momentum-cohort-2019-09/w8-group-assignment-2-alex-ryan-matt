@@ -7,6 +7,7 @@ from rest_framework import viewsets
 from flipasaurus.serializers import UserSerializer, CardSerializer, DeckSerializer
 from rest_framework.decorators import action
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 
 
 # Create your views here.
@@ -32,31 +33,11 @@ def create_deck(request):
   })
 
 @login_required(login_url='/accounts/login/')
-
+@csrf_exempt
 def view_deck(request, pk):
   deck = Deck.objects.get(id=pk)
-  if request.method == 'POST':
-    form = CardForm(request.POST)
-    if form.is_valid():
-      card = form.save(commit=False)
-      return redirect('create_card')
-  else:
-    form = CardForm()
+  form = CardForm()
   return render(request, "flipasaurus/view_deck.html", {'deck': deck, 'form': form})
-
-
-def create_card(request):
-#   if request.method == 'POST':
-#     form = CardForm(request.POST)
-#     if form.is_valid():
-#       card = form.save(commit=False)
-#       return redirect('create_card')
-#   else:
-#     form = CardForm()
-#   return render(request, 'flipasaurus/create_card.html', {
-#     'form': form
-#   })
-  pass
 
 @login_required(login_url='/accounts/login/')
 def delete_card(request, pk):
