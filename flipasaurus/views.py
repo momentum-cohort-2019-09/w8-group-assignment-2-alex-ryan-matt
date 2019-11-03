@@ -79,12 +79,12 @@ def view_deck(request, pk):
 
 @login_required(login_url='/accounts/login/')
 def delete_card(request, pk):
-  Card.objects.get(id=pk).delete()
+  Card.objects.get(pk=pk).delete()
   return redirect(to='flipasaurus/edit_deck.html')
 
 @login_required(login_url='/accounts/login/')
 def edit_deck(request, pk):
-  deck = get_object_or_404(Deck, id=pk)
+  deck = get_object_or_404(Deck, pk=pk)
   if request.method == 'POST':
     form = DeckForm(request.POST, instance=deck)
     if form.is_valid():
@@ -100,8 +100,12 @@ def edit_deck(request, pk):
 
 @login_required(login_url='/accounts/login/')    
 def delete_deck(request, pk):
+  print('deleting object')
+  
+  print(type(Deck.objects.get(id=pk)))
+  print(Deck.objects.get(id=pk))
   Deck.objects.get(id=pk).delete()
-  return redirect(to='flipasaurus/dashboard.html')
+  return redirect('/')
 
 class UserViewSet(viewsets.ModelViewSet):
   """
