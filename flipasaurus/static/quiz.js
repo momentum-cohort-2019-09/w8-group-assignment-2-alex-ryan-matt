@@ -6,17 +6,21 @@ let current_card_index = 0
 let cardsCorrect = [];
 let cardsIncorrect = [];
 
+let stack = document.querySelector('.stack')
+stack.addEventListener('click', function(){
+    stack.classList.toggle('is-flipped')
+    back.classList.toggle('hidden')
+})
 
+let front = document.querySelector('.prompt')
+let back = document.querySelector('.description-text')
 
+front.textContent = deck.cards[current_card_index].prompt
+back.textContent = deck.cards[current_card_index].description
 function flipCard(deck) {
     console.log(deck)
-    let card = document.getElementById('card');
-    if (card.innerHTML === deck.cards[current_card_index].prompt) {
-        card.innerHTML = deck.cards[current_card_index].description
-    } else {
-        card.innerHTML = deck.cards[current_card_index].prompt;
-    }
-    document.getElementById('button').classList.toggle("hidden")
+    front.textContent = deck.cards[current_card_index].prompt
+    back.textContent = deck.cards[current_card_index].description
 
 }
 
@@ -45,4 +49,3 @@ document.getElementById('incorrect').addEventListener('click', function(event) {
     incorrectCard()
 })
 
-document.getElementById('card').innerHTML = deck.cards[current_card_index].prompt
