@@ -65,6 +65,9 @@
     flex-wrap: wrap;
     margin:0;
 }
+.column .is-ancestor {
+  flex-wrap: wrap;
+}
 
 .hidden {
     display: none;
@@ -72,4 +75,41 @@
 
 .line{
   border: 1px solid black;
+}
+
+.scene {
+  width:300px;
+  height:240px;
+  border:1px solid #CCC;
+  margin:40px 15px;
+  perspective:600px;
+}
+
+.stack {
+  width:100%;
+  height:100%;
+  transition: transform .5s;
+  transform-style:preserve-3d;
+  cursor:pointer;
+  position:relative;
+}
+
+.stack.is-flipped{
+  transform:rotateY(180deg);
+}
+
+.face {
+  position:absolute;
+  width: 100%;
+  height:100%;
+  text-align:center;
+  backface-visibility: hidden;
+}
+
+.prompt {
+  background:palegoldenrod;
+}
+.description {
+  transform: rotateY(180deg);
+  background: yellow;
 }

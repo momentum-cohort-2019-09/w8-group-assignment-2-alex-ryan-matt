@@ -4,14 +4,24 @@
     <h2>Quiz</h2>
 </div>
 
-<p id='card' onclick="flipCard(deck)"></p>
-<!-- <script>
-    document.getElementById('card').innerHTML = deck.cards[0].prompt
-</script> -->
-<div class="hidden" id="button">
-    <button id="correct">Correct</button>
-    <button id="incorrect">Incorrect</button>
+<div class='scene'>
+    <div class="stack">
+        <div class="face prompt">
+            
+        </div>
+        <div class="face description">
+            <div class="description-text hidden">
+                
+            </div>
+            <div class="quiz-buttons">
+                <button id="correct">Correct</button>
+                <button id="incorrect">Incorrect</button>
+            </div>
+        </div>
+    </div>
 </div>
+
+<p id='card' onclick="flipCard(deck)"></p>
 
 <script src="{% static 'quiz.js' %}" defer></script>
 {% endblock %}

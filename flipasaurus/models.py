@@ -17,7 +17,7 @@ class Card(models.Model):
   correct_flips = models.IntegerField(default=0)
   incorrect_flips = models.IntegerField(default=0)
   success_rate = models.DecimalField(default=None, max_digits=5, decimal_places=2, blank=True, null=True)
-  deck = models.ForeignKey(to="Deck", related_name="cards", on_delete="models.CASCADE", null=True)
+  deck = models.ForeignKey(to="Deck", related_name="cards", on_delete=models.CASCADE, null=True)
 
   def __str__(self):
     return self.prompt
