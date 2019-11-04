@@ -27,7 +27,7 @@
     margin: 0
 }
 
-.deck {
+.deck .eachCard {
     background: rgb(168, 233, 227);
     padding: 6px;
     margin-bottom: 5px;
@@ -50,15 +50,15 @@
 }
 
 .create_deck {
+    font-family: 'Fredoka One', cursive;
     text-decoration: none;
     color: white;
     font-weight: 500;
 }
 
 .create_deck:hover {
-    font-weight: 700;
     color: white;
-    transition: all .2s ease;
+    
 }
 
 .section .is-ancestor {

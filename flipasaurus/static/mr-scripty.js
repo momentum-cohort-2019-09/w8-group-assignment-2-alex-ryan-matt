@@ -20,4 +20,25 @@ document.querySelector('#actual_thing_we_want').addEventListener('submit', funct
   })
     .then(response => { return response.json() })
     .then(response => { console.log(response) })
+
+
+  const div = document.querySelector('.cards_wrapper');
+  // div.innerHTML = '';
+  div.innerHTML += `
+  <button class="edit" type="button">Edit</button>
+  <div class="eachCard">
+  <p class="cardPrompt" data-prompt="${prompt}">${prompt}</p>
+
+  <p class= "cardDescription" data-description="${description}" > ${description}</p>
+
+    <button class="delete" type="button">Delete</button>
+  </div>
+  </div >
+      `;
+
+
+  document.querySelector('#actual_thing_we_want').reset()
+
+  console.log("i'm done!")
+
 })
