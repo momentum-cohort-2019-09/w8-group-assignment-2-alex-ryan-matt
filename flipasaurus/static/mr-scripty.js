@@ -20,4 +20,8 @@ document.querySelector('#actual_thing_we_want').addEventListener('submit', funct
   })
     .then(response => { return response.json() })
     .then(response => { console.log(response) })
+
+
+  console.log("i'm done!")
+
 })
