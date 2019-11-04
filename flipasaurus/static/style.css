@@ -27,7 +27,7 @@
     margin: 0
 }
 
-.deck {
+.deck .eachCard {
     background: rgb(168, 233, 227);
     padding: 6px;
     margin-bottom: 5px;
